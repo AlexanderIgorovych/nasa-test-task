@@ -20,9 +20,13 @@
  * at runtime from the About dialog for additional information.
  *****************************************************************************/
 
-define([
+define([   
+    "./src/ExampleStyleGuideModelProvider",
+    "./src/MCTExample",
     'legacyRegistry'
 ], function (
+    ExampleStyleGuideModelProvider,
+    MCTExample,
     legacyRegistry
 ) {
 
@@ -30,6 +34,12 @@ define([
         "name": "My Items",
         "description": "Defines a root named My Items",
         "extensions": {
+            "types": [
+                { "key": "my.cv", "name": "a.romaniak.cv", "cssClass": "icon-page", "description": "Introduction and overview to the style guide" },
+            ],
+            "views": [
+                { "key": "my.cv", "type": "my.cv", "templateUrl": "templates/cv-alexander-romaniak.html", "editable": false },
+            ],
             "roots": [
                 {
                     "id": "mine"
@@ -41,9 +51,37 @@ define([
                     "model": {
                         "name": "My Items",
                         "type": "folder",
-                        "composition": [],
-                        "location": "ROOT"
+                        "location": "ROOT",
+                        "composition": [
+                            "a.romaniak.cv"
+                        ]
                     }
+                }
+            ],
+            "directives": [
+                {
+                    "key": "mctExample",
+                    "implementation": MCTExample
+                }
+            ],
+            "components": [
+                {
+                    "provides": "modelService",
+                    "type": "provider",
+                    "implementation": ExampleStyleGuideModelProvider,
+                    "depends": [
+                        "$q"
+                    ]
+                }
+            ],
+            "stylesheets": [
+                {
+                    "stylesheetUrl": "css/style-guide-espresso.css",
+                    "theme": "espresso"
+                },
+                {
+                    "stylesheetUrl": "css/style-guide-snow.css",
+                    "theme": "snow"
                 }
             ]
         }
