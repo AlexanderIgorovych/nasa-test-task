@@ -35,7 +35,7 @@ define([
         "description": "Defines a root named My Items",
         "extensions": {
             "types": [
-                { "key": "my.cv", "name": "a.romaniak.cv", "cssClass": "icon-page", "description": "Introduction and overview to the style guide" },
+                { "key": "my.cv", "name": "A_Romaniak_CV", "cssClass": "icon-page", "description": "Introduction and overview to the style guide" },
             ],
             "views": [
                 { "key": "my.cv", "type": "my.cv", "templateUrl": "templates/cv-alexander-romaniak.html", "editable": false },
